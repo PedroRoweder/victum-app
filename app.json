@@ -1,0 +1,12 @@
+{
+  "name": "victum-app",
+  "displayName": "victum-app",
+  "expo": {
+    "name": "victum-app",
+    "slug": "victum-app",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  }
+}
