@@ -8,7 +8,7 @@ export const MainMenu = ({ navigation }) => {
   return (
     <View style={styles.container}>
       <Image source={img} style={styles.header}></Image>
-      <MainButtonList />
+      <MainButtonList navigation={navigation} />
       <StatusBar visible="auto" />
     </View>
   );
