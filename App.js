@@ -1,25 +1,37 @@
-import { StatusBar } from "expo-status-bar";
 import React from "react";
-import { StyleSheet, Text, View } from "react-native";
+import { Provider } from "react-native-paper";
+import { StatusBar } from "expo-status-bar";
+import { MainButtonList } from "./components/MainButtonList";
+import { StyleSheet, View, Image } from "react-native";
+import img from "./images/autopflege_vetor-2.png";
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text style={styles.text}>Boilerplate Victum-App Project</Text>
-      <StatusBar style="auto" />
-    </View>
+    <Provider>
+      <View style={styles.container}>
+        <Image source={img} style={styles.header}></Image>
+        <MainButtonList />
+        <StatusBar visible="auto" />
+      </View>
+    </Provider>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center",
+    backgroundColor: "#FBFBFB",
   },
-  text: {
-    fontSize: 20,
+  header: {
+    marginTop: 100,
+    height: 250,
+    width: "96%",
+    marginHorizontal: "2%",
+    resizeMode: "contain",
+  },
+  title: {
+    fontSize: 50,
     color: "black",
+    position: "absolute",
   },
 });
