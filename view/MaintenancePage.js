@@ -1,10 +1,10 @@
 import React from "react";
 import { View, Text, StyleSheet } from "react-native";
 
-export const MaintencePage = ({ navigator }) => {
+export const MaintenancePage = ({ navigator }) => {
   return (
     <View style={styles.container}>
-      <Text style={styles.text}>Maintence Page</Text>
+      <Text style={styles.text}>MaintenancePage Page</Text>
     </View>
   );
 };
