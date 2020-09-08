@@ -23,7 +23,7 @@ export const VisualizePage = ({ navigation }) => {
           style={styles.input}
           onChangeText={(text) => setText(text)}
         />
-        <VisualizeList />
+        <VisualizeList navigation={navigation} />
         <FAB
           style={styles.fab}
           large
@@ -54,10 +54,5 @@ const styles = StyleSheet.create({
     right: 0,
     bottom: 0,
     backgroundColor: "#00c9c7",
-  },
-  border: {
-    borderStyle: "solid",
-    borderWidth: 2,
-    borderColor: "blue",
   },
 });

@@ -3,7 +3,7 @@ import { List, Text } from "react-native-paper";
 import { View } from "react-native";
 import { ScrollView } from "react-native-gesture-handler";
 
-export const VisualizeList = () => {
+export const VisualizeList = ({ navigation }) => {
   const items = [
     { SKU: "APF01", desc: "Reparo caixa de direção elétrica" },
     { SKU: "APF02", desc: "Penis vagina teste teste" },
@@ -40,7 +40,7 @@ export const VisualizeList = () => {
             title={item.SKU}
             description={item.desc}
             left={(props) => <List.Icon {...props} icon="wrench" />}
-            onPress={() => alert(item.SKU)}
+            onPress={() => navigation.navigate("visualizeDetails", item)}
           />
         );
       })}
