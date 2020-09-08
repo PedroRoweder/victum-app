@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { View, StyleSheet } from "react-native";
 import { TextInput, FAB, List } from "react-native-paper";
 import { SafeAreaView } from "react-native-safe-area-context";
+import { VisualizeList } from "./components/VisualizeList";
 
 export const VisualizePage = ({ navigation }) => {
   const [text, setText] = useState("");
@@ -22,7 +23,7 @@ export const VisualizePage = ({ navigation }) => {
           style={styles.input}
           onChangeText={(text) => setText(text)}
         />
-
+        <VisualizeList />
         <FAB
           style={styles.fab}
           large
