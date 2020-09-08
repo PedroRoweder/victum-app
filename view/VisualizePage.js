@@ -1,7 +1,8 @@
 import React, { useState } from "react";
-import { View, Text, StyleSheet } from "react-native";
-import { Button, TextInput, Avatar } from "react-native-paper";
+import { View, StyleSheet } from "react-native";
+import { TextInput, FAB, List } from "react-native-paper";
 import { SafeAreaView } from "react-native-safe-area-context";
+import { VisualizeList } from "./components/VisualizeList";
 
 export const VisualizePage = ({ navigator }) => {
   const [text, setText] = useState("");
@@ -16,28 +17,26 @@ export const VisualizePage = ({ navigator }) => {
               underlineColor: "#004645",
             },
           }}
-          label="Teste"
+          label="Pesquisa..."
           mode="outlined"
           value={text}
           style={styles.input}
           onChangeText={(text) => setText(text)}
         />
-        <View style={styles.buttonContainer}>
-          <Button
-            mode="contained"
-            color="#004546"
-            onPress={() => alert("Open Bar Code Scanner")}
-            style={styles.button}
-            labelStyle={styles.text}
-            title="SCAN"
-          >
-            SCAN
-          </Button>
-        </View>
+        <VisualizeList />
+        <FAB
+          style={styles.fab}
+          large
+          icon="camera"
+          onPress={() => alert("Pressed")}
+          color="#004645"
+        />
       </View>
     </SafeAreaView>
   );
 };
+
+/**/
 
 const styles = StyleSheet.create({
   container: {
@@ -49,31 +48,12 @@ const styles = StyleSheet.create({
     width: "96%",
     marginHorizontal: "2%",
   },
-  buttonContainer: {
-    flex: 1,
-    textAlign: "center",
-    justifyContent: "flex-end",
-    alignItems: "flex-end",
-    marginBottom: 5,
-    marginHorizontal: 5,
-  },
-  button: {
-    justifyContent: "center",
-    alignItems: "center",
-    height: 80,
-    width: 80,
-    borderRadius: 40,
-    padding: 0,
-    margin: 5,
-  },
-  text: {
-    paddingVertical: 18,
-    borderRadius: 50,
-    /*display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
-    fontSize: 20,
-    lineHeight: 38,*/
+  fab: {
+    position: "absolute",
+    margin: 16,
+    right: 0,
+    bottom: 0,
+    backgroundColor: "#00c9c7",
   },
   border: {
     borderStyle: "solid",
