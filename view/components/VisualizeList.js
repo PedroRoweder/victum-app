@@ -40,7 +40,11 @@ export const VisualizeList = ({ navigation }) => {
             title={item.SKU}
             description={item.desc}
             left={(props) => <List.Icon {...props} icon="wrench" />}
-            onPress={() => navigation.navigate("visualizeDetails", item)}
+            onPress={() => {
+              //Here we will make a request to get the "item" with
+              //the details and send it to the visualizeDetails page
+              navigation.navigate("visualizeDetails", item);
+            }}
           />
         );
       })}
