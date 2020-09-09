@@ -8,7 +8,7 @@ export const VisualizeDetails = ({ route, navigation }) => {
 
   return (
     <SafeAreaView style={styles.safeArea}>
-      <OperationList operationQuantity={3} />
+      <OperationList />
       <View style={styles.container}>
         <Text>{SKU}</Text>
       </View>
