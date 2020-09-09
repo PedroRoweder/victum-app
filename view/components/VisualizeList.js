@@ -3,7 +3,7 @@ import { List, Text } from "react-native-paper";
 import { View } from "react-native";
 import { ScrollView } from "react-native-gesture-handler";
 
-export const VisualizeList = ({ navigation }) => {
+export const VisualizeList = ({ navigation, searchText }) => {
   const items = [
     { SKU: "APF01", desc: "Reparo caixa de direção elétrica" },
     { SKU: "APF02", desc: "Penis vagina teste teste" },
@@ -33,21 +33,27 @@ export const VisualizeList = ({ navigation }) => {
 
   return (
     <ScrollView>
-      {items.map((item) => {
-        return (
-          <List.Item
-            key={item.SKU}
-            title={item.SKU}
-            description={item.desc}
-            left={(props) => <List.Icon {...props} icon="wrench" />}
-            onPress={() => {
-              //Here we will make a request to get the "item" with
-              //the details and send it to the visualizeDetails page
-              navigation.navigate("visualizeDetails", item);
-            }}
-          />
-        );
-      })}
+      {items
+        .filter(
+          (item) =>
+            item.SKU.toUpperCase().indexOf(searchText.toUpperCase()) != -1 ||
+            item.desc.toUpperCase().indexOf(searchText.toUpperCase()) != -1
+        )
+        .map((item) => {
+          return (
+            <List.Item
+              key={item.SKU}
+              title={item.SKU}
+              description={item.desc}
+              left={(props) => <List.Icon {...props} icon="wrench" />}
+              onPress={() => {
+                //Here we will make a request to get the "item" with
+                //the details and send it to the visualizeDetails page
+                navigation.navigate("visualizeDetails", item);
+              }}
+            />
+          );
+        })}
     </ScrollView>
   );
 };

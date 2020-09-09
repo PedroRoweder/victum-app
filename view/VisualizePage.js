@@ -23,7 +23,7 @@ export const VisualizePage = ({ navigation }) => {
           style={styles.input}
           onChangeText={(text) => setText(text)}
         />
-        <VisualizeList navigation={navigation} />
+        <VisualizeList navigation={navigation} searchText={text} />
         <FAB
           style={styles.fab}
           large
