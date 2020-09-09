@@ -4,9 +4,9 @@ import { TextInput, FAB, List } from "react-native-paper";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { VisualizeList } from "./components/VisualizeList";
 
-export const VisualizePage = ({ navigation }) => {
+export const VisualizePage = ({ route, navigation }) => {
   const [text, setText] = useState("");
-
+  const { barData } = route.params;
   return (
     <SafeAreaView>
       <View style={styles.container}>
