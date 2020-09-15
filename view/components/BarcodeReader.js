@@ -62,7 +62,9 @@ export default BarcodeReader = ({ navigation }) => {
               Ler novamente
             </Button>
             <Button
-              onPress={() => navigation.navigate("visualize", { barData })}
+              onPress={() =>
+                navigation.navigate("visualizeDetails", { barData })
+              }
             >
               Prosseguir
             </Button>

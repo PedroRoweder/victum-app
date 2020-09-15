@@ -6,7 +6,7 @@ import { VisualizeList } from "./components/VisualizeList";
 
 export const VisualizePage = ({ route, navigation }) => {
   const [text, setText] = useState("");
-  const { barData } = route.params;
+  //const { barData } = route.params;
   return (
     <SafeAreaView>
       <View style={styles.container}>
