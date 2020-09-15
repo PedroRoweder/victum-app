@@ -5,15 +5,12 @@ import { TouchableHighlight } from "react-native-gesture-handler";
 export const OperationList = ({ operationQuantity }) => {
   const getButtonColor = (operationStage) => {
     switch (operationStage) {
-      case "DONE":
-        return "#35CE8D";
-        break;
-      case "DOING":
-        return "#DD403A";
-        break;
       case "TODO":
         return "#444";
-        break;
+      case "DONE":
+        return "#35CE8D";
+      case "DOING":
+        return "#DD403A";
     }
   };
 
