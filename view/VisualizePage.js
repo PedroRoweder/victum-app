@@ -36,8 +36,6 @@ export const VisualizePage = ({ route, navigation }) => {
   );
 };
 
-/**/
-
 const styles = StyleSheet.create({
   container: {
     display: "flex",

@@ -55,7 +55,6 @@ export default BarcodeReader = ({ navigation }) => {
             <Button
               onPress={() => {
                 setScanned(false);
-
                 hideDialog;
               }}
             >
@@ -63,7 +62,7 @@ export default BarcodeReader = ({ navigation }) => {
             </Button>
             <Button
               onPress={() =>
-                navigation.navigate("visualizeDetails", { barData })
+                navigation.navigate("visualizeDetails", { SKU: barData })
               }
             >
               Prosseguir
