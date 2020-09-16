@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { List, Text } from "react-native-paper";
 import { View } from "react-native";
 import { ScrollView } from "react-native-gesture-handler";
+import { Loading } from "./Loading";
 
 export const VisualizeList = ({ navigation, searchText }) => {
   const items = [
@@ -30,10 +31,12 @@ export const VisualizeList = ({ navigation, searchText }) => {
     { SKU: "APF23", desc: "Penis vagina teste teste" },
     { SKU: "APF24", desc: "Penis vagina teste teste" },
   ];
+  const [loadingStatus, setLoadingStatus] = useState(true);
+  const [itemList, setItemList] = useState([]);
 
-  return (
-    <ScrollView>
-      {items
+  useEffect(() => {
+    setTimeout(() => {
+      const list = items
         .filter(
           (item) =>
             item.SKU.toUpperCase().indexOf(searchText.toUpperCase()) != -1 ||
@@ -53,7 +56,16 @@ export const VisualizeList = ({ navigation, searchText }) => {
               }}
             />
           );
-        })}
-    </ScrollView>
+        });
+      setItemList(list);
+      setLoadingStatus(false);
+    }, 1500);
+  }, []);
+
+  return (
+    <>
+      <Loading loadingStatus={loadingStatus} />
+      {!loadingStatus && <ScrollView>{itemList}</ScrollView>}
+    </>
   );
 };
