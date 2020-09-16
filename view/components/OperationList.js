@@ -2,9 +2,9 @@ import React from "react";
 import { View, Text, StyleSheet, ScrollView } from "react-native";
 import { TouchableHighlight } from "react-native-gesture-handler";
 
-export const OperationList = ({ operationQuantity }) => {
-  const getButtonColor = (operationStage) => {
-    switch (operationStage) {
+export const OperationList = ({ operationListInfo, onPress }) => {
+  const getButtonColor = (status) => {
+    switch (status) {
       case "TODO":
         return "#444";
       case "DONE":
@@ -16,17 +16,12 @@ export const OperationList = ({ operationQuantity }) => {
 
   //This is a placeholder for the operation list that we will get
   //from the visualizeList.js request
-  const buttons = [
-    { operationText: "OP1 - SF1", operationStage: "DONE" },
-    { operationText: "OP2 - SF2", operationStage: "DOING" },
-    { operationText: "OP3 - SF3", operationStage: "TODO" },
-  ];
 
-  const buttonList = buttons.map((item) => {
+  const buttonList = operationListInfo.map((item, index) => {
     return (
       <View style={styles.mainContainer}>
         <TouchableHighlight
-          onPress={() => alert("touched")}
+          onPress={() => onPress(index)}
           underlayColor="white"
           style={styles.touchable}
         >
@@ -35,11 +30,13 @@ export const OperationList = ({ operationQuantity }) => {
               width: 35,
               height: 35,
               borderRadius: 10,
-              backgroundColor: getButtonColor(item.operationStage),
+              backgroundColor: getButtonColor(item.status),
             }}
           ></View>
         </TouchableHighlight>
-        <Text style={styles.text}>{item.operationText}</Text>
+        <Text style={styles.text}>
+          OP{index + 1} - {item.operationTitle}
+        </Text>
       </View>
     );
   });
