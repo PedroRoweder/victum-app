@@ -5,6 +5,7 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import { VisualizeList } from "./components/VisualizeList";
 
 export const VisualizePage = ({ route, navigation }) => {
+  const isProduction = false;
   const [text, setText] = useState("");
 
   return (
@@ -28,7 +29,7 @@ export const VisualizePage = ({ route, navigation }) => {
           style={styles.fab}
           large
           icon="camera"
-          onPress={() => navigation.navigate("barcodeReader")}
+          onPress={() => navigation.navigate("barcodeReader", { isProduction })}
           color="#004645"
         />
       </View>

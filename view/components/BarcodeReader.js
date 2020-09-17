@@ -3,11 +3,12 @@ import { Text, View, StyleSheet } from "react-native";
 import { BarCodeScanner } from "expo-barcode-scanner";
 import { Button, Paragraph, Dialog, Portal } from "react-native-paper";
 
-export default BarcodeReader = ({ navigation }) => {
+export default BarcodeReader = ({ route, navigation }) => {
   const [hasPermission, setHasPermission] = useState(null);
   const [scanned, setScanned] = useState(false);
   const [barData, setBarData] = useState("");
   const [visible, setVisible] = useState(true);
+  const { isProduction } = route;
 
   const showDialog = () => setVisible(true);
 
@@ -61,9 +62,13 @@ export default BarcodeReader = ({ navigation }) => {
               Ler novamente
             </Button>
             <Button
-              onPress={() =>
-                navigation.navigate("visualizeDetails", { SKU: barData })
-              }
+              onPress={() => {
+                if (isProduction) {
+                  navigation.navigate("productionDetails", { SKU: barData });
+                } else {
+                  navigation.navigate("visualizeDetails", { SKU: barData });
+                }
+              }}
             >
               Prosseguir
             </Button>
