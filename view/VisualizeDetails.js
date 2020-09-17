@@ -33,30 +33,30 @@ export const VisualizeDetails = ({ route, navigation }) => {
                 "Quantidade: 6 peças",
               ],
             },
-            {
-              title: "Matéria Prima",
-              type: "text", //Type and content of the dropdown
-              content: [
-                "Material: Poliacetal Branco",
-                "Diâmetro: 36mm",
-                "Comprimento: 250mm",
-                "Quantidade: 6 peças",
-              ],
-            },
           ],
         },
         {
           //Each dropdown that the operation has.
-          title: "Setup de Máquina", //Dropdown title
+          title: "Outro Setup de Maquina", //Dropdown title
           stepContent: [
             {
-              title: "Matéria Prima",
+              title: "Seloko",
               type: "text", //Type and content of the dropdown
               content: [
-                "Material: Poliacetal Branco",
-                "Diâmetro: 36mm",
-                "Comprimento: 250mm",
-                "Quantidade: 6 peças",
+                "Material: Poliacetal Negro",
+                "Diâmetro: 216mm",
+                "Comprimento: 1250mm",
+                "Quantidade: 900 peças",
+              ],
+            },
+            {
+              title: "Funciona",
+              type: "text", //Type and content of the dropdown
+              content: [
+                "Não é mesmo?",
+                "penis",
+                "vagina",
+                "Quantidade: 40 peças",
               ],
             },
           ],

@@ -9,32 +9,46 @@ export const OperationDetails = ({ operationDetailsInfo, operationIndex }) => {
   // });
   //});
 
-  const RenderContentList = ({ stepContent }) => {
-    return stepContent.content.map((item) => {
-      return <Text>{item}</Text>;
-    });
+  const RenderContentList = (stepContent) => {
+    /*
+      THIS WORKS! But just returns plain text.
+      Now, we need to create the separate 
+      components, with styling and all.
+      The components I know we need:
+        - Text
+        - Checkbox
+        - Table
+        - Measurement
+      There wont be many more, maybe one or two.
+    */
+    return (
+      <View>
+        <Title>{stepContent.title}</Title>
+        {stepContent.content.map((item) => {
+          return <Text>{item}</Text>;
+        })}
+      </View>
+    );
 
-    /*switch (content.type) {
+    /*switch (stepContent.type) {
       case "text":
-        return;
-      case "checkbox":
-        return;
+        return <TextOperationStep content={stepContent}/>;
+      //case "checkbox":
+      //  return <CheckboxOperationStep />;
     }*/
   };
 
   const productionDetails = operationDetailsInfo[operationIndex].map(
     (step, index) => {
       return (
-        <List.Accordion title={step.title} id={index + 1}>
-          {/* {step.map((stepContent) => {
-            console.log(stepContent);
-            return (
-              <View>
-                <Title>{stepContent.title}</Title>
-                <RenderContentList content={stepContent} />;
-              </View>
-            );
-          })} */}
+        <List.Accordion
+          theme={{ colors: { primary: "#004645" } }}
+          title={step.title}
+          id={index + 1}
+        >
+          {step.stepContent.map((stepContent) => {
+            return RenderContentList(stepContent);
+          })}
         </List.Accordion>
       );
     }
