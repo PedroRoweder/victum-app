@@ -59,6 +59,46 @@ export const VisualizeDetails = ({ route, navigation }) => {
                 "Quantidade: 40 peças",
               ],
             },
+            {
+              title: "Funciona",
+              type: "text", //Type and content of the dropdown
+              content: [
+                "Não é mesmo?",
+                "penis",
+                "vagina",
+                "Quantidade: 40 peças",
+              ],
+            },
+            {
+              title: "Funciona",
+              type: "text", //Type and content of the dropdown
+              content: [
+                "Não é mesmo?",
+                "penis",
+                "vagina",
+                "Quantidade: 40 peças",
+              ],
+            },
+            {
+              title: "Funciona",
+              type: "text", //Type and content of the dropdown
+              content: [
+                "Não é mesmo?",
+                "penis",
+                "vagina",
+                "Quantidade: 40 peças",
+              ],
+            },
+            {
+              title: "Funciona",
+              type: "text", //Type and content of the dropdown
+              content: [
+                "Não é mesmo?",
+                "penis",
+                "vagina",
+                "Quantidade: 40 peças",
+              ],
+            },
           ],
         },
       ],

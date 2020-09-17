@@ -59,7 +59,7 @@ export const VisualizeList = ({ navigation, searchText }) => {
         });
       setItemList(list);
       setLoadingStatus(false);
-    }, 1500);
+    }, 100);
   }, []);
 
   return (

@@ -1,6 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 import { View, Text, StyleSheet, ScrollView } from "react-native";
 import { List, Title } from "react-native-paper";
+import { TextOperationStep } from "./TextOperationStep";
+import { CheckboxOperationStep } from "./CheckboxOperationStep";
 
 export const OperationDetails = ({ operationDetailsInfo, operationIndex }) => {
   //const subOperationSteps = operationDetailsInfo[operationIndex].map((item) => {
@@ -21,30 +23,33 @@ export const OperationDetails = ({ operationDetailsInfo, operationIndex }) => {
         - Measurement
       There wont be many more, maybe one or two.
     */
-    return (
+    // ^^^^^^^^^^^^^^^^^^^^^^^^^^
+    /*return (
       <View>
         <Title>{stepContent.title}</Title>
         {stepContent.content.map((item) => {
           return <Text>{item}</Text>;
         })}
       </View>
-    );
-
-    /*switch (stepContent.type) {
+    );*/
+    switch (stepContent.type) {
       case "text":
-        return <TextOperationStep content={stepContent}/>;
-      //case "checkbox":
-      //  return <CheckboxOperationStep />;
-    }*/
+        return <TextOperationStep stepContent={stepContent} />;
+      case "checkbox":
+        return <CheckboxOperationStep stepContent={stepContent} />;
+    }
   };
 
   const productionDetails = operationDetailsInfo[operationIndex].map(
     (step, index) => {
       return (
         <List.Accordion
+          id={index + 1}
+          key={index + 1}
+          style={styles.dropdown}
           theme={{ colors: { primary: "#004645" } }}
           title={step.title}
-          id={index + 1}
+          titleStyle={styles.dropdownText}
         >
           {step.stepContent.map((stepContent) => {
             return RenderContentList(stepContent);
@@ -55,8 +60,19 @@ export const OperationDetails = ({ operationDetailsInfo, operationIndex }) => {
   );
 
   return (
-    <View>
+    <ScrollView>
       <List.AccordionGroup>{productionDetails}</List.AccordionGroup>
-    </View>
+    </ScrollView>
   );
 };
+
+const styles = StyleSheet.create({
+  dropdownText: {
+    fontSize: 25,
+  },
+  dropdown: {
+    borderBottomColor: "#444",
+    borderStyle: "solid",
+    borderBottomWidth: 1,
+  },
+});

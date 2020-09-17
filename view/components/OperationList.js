@@ -14,9 +14,6 @@ export const OperationList = ({ operationListInfo, onPress }) => {
     }
   };
 
-  //This is a placeholder for the operation list that we will get
-  //from the visualizeList.js request
-
   const buttonList = operationListInfo.map((item, index) => {
     return (
       <View style={styles.mainContainer}>
