@@ -153,9 +153,9 @@ export const VisualizeDetails = ({ route, navigation }) => {
               type: "measurement", //Type and content of the dropdown
               imageURL: "https://i.imgur.com/3vUtVcr.png",
               content: [
-                { Min: "Ø23.99", Max: "Ø24.02" },
-                { Min: "Ø32.28", Max: "Ø32.32" },
-                { Min: "Ø35", Max: "Ø35.2" },
+                { min: "Ø23.99", max: "Ø24.02" },
+                { min: "Ø32.28", max: "Ø32.32" },
+                { min: "Ø35", max: "Ø35.2" },
               ],
             },
           ],
