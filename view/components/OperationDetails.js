@@ -16,7 +16,7 @@ export const OperationDetails = ({ operationDetailsInfo, operationIndex }) => {
       THIS WORKS! But just returns plain text.
       Now, we need to create the separate 
       components, with styling and all.
-      The components I know we need:
+      The components I know we need: 
         - Text
         - Checkbox
         - Table

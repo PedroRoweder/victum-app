@@ -1,4 +1,7 @@
 {
-  "gray": "#444",
-  "green": "#004645"
+  "logoGray": "#444",
+  "logoGreen": "#004645",
+  "golden": "#E6AF2E",
+  "red": "#DD403A",
+  "green": "#35CE8D"
 }

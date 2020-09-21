@@ -1,29 +1,65 @@
-import React, { useState } from "react";
-import { View, Text, StyleSheet, ScrollView } from "react-native";
+import React, { useState, useEffect } from "react";
+import { View, StyleSheet, ActivityIndicator } from "react-native";
 import { Checkbox, Title } from "react-native-paper";
 
 export const CheckboxOperationStep = ({ stepContent }) => {
-  // There's a problem with this component, it renders
-  // all the checkboxes correctly, but it checkes all of them
-  // at once
+  const [checks, setChecks] = useState([]);
+  const [checked, setChecked] = useState([]);
+  const [loadStatus, setLoadStatus] = useState(true);
 
-  //This useState is probably the cause of the problem
-  const [checked, setChecked] = useState(false);
+  useEffect(() => {
+    setChecks(
+      stepContent.content.map((item, index) => (
+        <Check
+          key={index}
+          label={item}
+          value={getValue(index)}
+          onPress={() => handleCheck(index)}
+        />
+      ))
+    );
+    setLoadStatus(false);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [checked]);
+
+  function handleCheck(key) {
+    let values = [...checked];
+    let index = values.indexOf(key);
+
+    if (index > -1) {
+      values.splice(index, 1);
+    } else {
+      values.push(key);
+    }
+
+    setChecked(values);
+  }
+
+  function getValue(key) {
+    return checked.indexOf(key) > -1;
+  }
 
   return (
-    <View style={styles.container}>
-      <Title style={styles.title}>{stepContent.title}</Title>
-      {stepContent.content.map((item, index) => {
-        return (
-          <Checkbox.Item
-            label={item}
-            key={index}
-            status={checked ? "checked" : "unchecked"}
-            onPress={() => setChecked(!checked)}
-          />
-        );
-      })}
-    </View>
+    <>
+      {(loadStatus && <ActivityIndicator size="small" color="#E6AF2E" />) || (
+        <View style={styles.container}>
+          <Title style={styles.title}>{stepContent.title}</Title>
+          {checks}
+        </View>
+      )}
+    </>
+  );
+};
+
+const Check = ({ label, onPress, value }) => {
+  return (
+    <Checkbox.Item
+      label={label}
+      labelStyle={styles.labels}
+      color="#35CE8D"
+      onPress={onPress}
+      status={value ? "checked" : "unchecked"}
+    />
   );
 };
 
@@ -33,11 +69,11 @@ const styles = StyleSheet.create({
     padding: "2%",
   },
   title: {
-    fontSize: 25,
-  },
-  text: {
-    marginHorizontal: "2%",
     fontSize: 20,
+  },
+  labels: {
+    color: "#444",
+    fontSize: 18,
   },
 });
 

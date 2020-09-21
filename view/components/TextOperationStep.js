@@ -19,11 +19,11 @@ const styles = StyleSheet.create({
     padding: "2%",
   },
   title: {
-    fontSize: 25,
+    fontSize: 20,
   },
   text: {
     marginHorizontal: "2%",
-    fontSize: 20,
+    fontSize: 18,
   },
 });
 
