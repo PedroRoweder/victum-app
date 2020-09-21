@@ -35,37 +35,43 @@ export const VisualizeList = ({ navigation, searchText }) => {
   const [itemList, setItemList] = useState([]);
 
   useEffect(() => {
-    setTimeout(() => {
-      const list = items
-        .filter(
-          (item) =>
-            item.SKU.toUpperCase().indexOf(searchText.toUpperCase()) != -1 ||
-            item.desc.toUpperCase().indexOf(searchText.toUpperCase()) != -1
-        )
-        .map((item) => {
-          return (
-            <List.Item
-              key={item.SKU}
-              title={item.SKU}
-              description={item.desc}
-              left={(props) => <List.Icon {...props} icon="wrench" />}
-              onPress={() => {
-                //Here we will make a request to get the "item" with
-                //the details and send it to the visualizeDetails page
-                navigation.navigate("visualizeDetails", item);
-              }}
-            />
-          );
-        });
-      setItemList(list);
-      setLoadingStatus(false);
-    }, 100);
+    const list = items.map((item) => {
+      return (
+        <List.Item
+          key={item.SKU}
+          title={item.SKU}
+          description={item.desc}
+          left={(props) => <List.Icon {...props} icon="wrench" />}
+          onPress={() => {
+            //Here we will make a request to get the "item" with
+            //the details and send it to the visualizeDetails page
+            navigation.navigate("visualizeDetails", item);
+          }}
+        />
+      );
+    });
+    setItemList(list);
+    setLoadingStatus(false);
   }, []);
 
   return (
     <>
       <Loading loadingStatus={loadingStatus} />
-      {!loadingStatus && <ScrollView>{itemList}</ScrollView>}
+      {!loadingStatus && (
+        <ScrollView>
+          {itemList.filter((item) => {
+            console.log(item.props.title);
+            return (
+              item.props.title
+                .toUpperCase()
+                .indexOf(searchText.toUpperCase()) != -1 ||
+              item.props.description
+                .toUpperCase()
+                .indexOf(searchText.toUpperCase()) != -1
+            );
+          })}
+        </ScrollView>
+      )}
     </>
   );
 };

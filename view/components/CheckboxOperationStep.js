@@ -2,6 +2,18 @@ import React, { useState, useEffect } from "react";
 import { View, StyleSheet, ActivityIndicator } from "react-native";
 import { Checkbox, Title } from "react-native-paper";
 
+const Check = ({ label, onPress, value }) => {
+  return (
+    <Checkbox.Item
+      label={label}
+      labelStyle={styles.labels}
+      color="#35CE8D"
+      onPress={onPress}
+      status={value ? "checked" : "unchecked"}
+    />
+  );
+};
+
 export const CheckboxOperationStep = ({ stepContent }) => {
   const [checks, setChecks] = useState([]);
   const [checked, setChecked] = useState([]);
@@ -48,18 +60,6 @@ export const CheckboxOperationStep = ({ stepContent }) => {
         </View>
       )}
     </>
-  );
-};
-
-const Check = ({ label, onPress, value }) => {
-  return (
-    <Checkbox.Item
-      label={label}
-      labelStyle={styles.labels}
-      color="#35CE8D"
-      onPress={onPress}
-      status={value ? "checked" : "unchecked"}
-    />
   );
 };
 
