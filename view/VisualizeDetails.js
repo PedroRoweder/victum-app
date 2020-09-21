@@ -140,6 +140,28 @@ export const VisualizeDetails = ({ route, navigation }) => {
         },
       ],
     },
+    {
+      operationTitle: "PENIS", //Torno
+      status: "TODO", //DOING, DONE, TODO.
+      steps: [
+        {
+          //Each dropdown that the operation has.
+          title: "Measurement", //Dropdown title
+          stepContent: [
+            {
+              title: "Batente de Segurança",
+              type: "measurement", //Type and content of the dropdown
+              imageURL: "https://i.imgur.com/3vUtVcr.png",
+              content: [
+                { Min: "Ø23.99", Max: "Ø24.02" },
+                { Min: "Ø32.28", Max: "Ø32.32" },
+                { Min: "Ø35", Max: "Ø35.2" },
+              ],
+            },
+          ],
+        },
+      ],
+    },
   ];
 
   operationList.map((item) => {

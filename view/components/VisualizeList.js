@@ -60,7 +60,6 @@ export const VisualizeList = ({ navigation, searchText }) => {
       {!loadingStatus && (
         <ScrollView>
           {itemList.filter((item) => {
-            console.log(item.props.title);
             return (
               item.props.title
                 .toUpperCase()

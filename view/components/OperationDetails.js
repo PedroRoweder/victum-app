@@ -3,6 +3,7 @@ import { View, Text, StyleSheet, ScrollView } from "react-native";
 import { List, Title } from "react-native-paper";
 import { TextOperationStep } from "./TextOperationStep";
 import { CheckboxOperationStep } from "./CheckboxOperationStep";
+import { MeasurementOperationStep } from "./MeasurementOperationStep";
 
 export const OperationDetails = ({ operationDetailsInfo, operationIndex }) => {
   //const subOperationSteps = operationDetailsInfo[operationIndex].map((item) => {
@@ -23,7 +24,6 @@ export const OperationDetails = ({ operationDetailsInfo, operationIndex }) => {
         - Measurement
       There wont be many more, maybe one or two.
     */
-    // ^^^^^^^^^^^^^^^^^^^^^^^^^^
     /*return (
       <View>
         <Title>{stepContent.title}</Title>
@@ -32,11 +32,16 @@ export const OperationDetails = ({ operationDetailsInfo, operationIndex }) => {
         })}
       </View>
     );*/
+
     switch (stepContent.type) {
       case "text":
         return <TextOperationStep stepContent={stepContent} />;
       case "checkbox":
         return <CheckboxOperationStep stepContent={stepContent} />;
+      //case "table":
+      //  return;
+      case "measurement":
+        return <MeasurementOperationStep stepContent={stepContent} />;
     }
   };
 
