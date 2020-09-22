@@ -4,14 +4,9 @@ import { List, Title } from "react-native-paper";
 import { TextOperationStep } from "./TextOperationStep";
 import { CheckboxOperationStep } from "./CheckboxOperationStep";
 import { MeasurementOperationStep } from "./MeasurementOperationStep";
+import { MeasurementCheckOperationStep } from "./MeasurementCheckOperationStep";
 
 export const OperationDetails = ({ operationDetailsInfo, operationIndex }) => {
-  //const subOperationSteps = operationDetailsInfo[operationIndex].map((item) => {
-  // item.stepContent.map((item) => {
-  //   return <List.Item title={item.title} />;
-  // });
-  //});
-
   const RenderContentList = (stepContent) => {
     /*
       THIS WORKS! But just returns plain text.
@@ -42,6 +37,8 @@ export const OperationDetails = ({ operationDetailsInfo, operationIndex }) => {
       //  return;
       case "measurement":
         return <MeasurementOperationStep stepContent={stepContent} />;
+      case "measure-check":
+        return <MeasurementCheckOperationStep stepContent={stepContent} />;
     }
   };
 

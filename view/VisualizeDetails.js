@@ -15,17 +15,18 @@ export const VisualizeDetails = ({ route, navigation }) => {
   //a seguir é somente um mockup do que irá retornar do banco
   //pode ser alterado.
   const operationList = [
+    // type Text
     {
-      operationTitle: "SF", //Serra Fita
+      operationTitle: "TX",
       status: "DONE", //DOING, DONE, TODO.
       steps: [
         {
           //Each dropdown that the operation has.
-          title: "Setup de Máquina", //Dropdown title
+          title: "Text", //Dropdown title
           stepContent: [
             {
               title: "Matéria Prima",
-              type: "text", //Type and content of the dropdown
+              type: "text",
               content: [
                 "Material: Poliacetal Branco",
                 "Diâmetro: 36mm",
@@ -37,7 +38,7 @@ export const VisualizeDetails = ({ route, navigation }) => {
         },
         {
           //Each dropdown that the operation has.
-          title: "Outro Setup de Maquina", //Dropdown title
+          title: "Outro Text", //Dropdown title
           stepContent: [
             {
               title: "Seloko",
@@ -59,63 +60,19 @@ export const VisualizeDetails = ({ route, navigation }) => {
                 "Quantidade: 40 peças",
               ],
             },
-            {
-              title: "Funciona",
-              type: "text", //Type and content of the dropdown
-              content: [
-                "Não é mesmo?",
-                "penis",
-                "vagina",
-                "Quantidade: 40 peças",
-              ],
-            },
-            {
-              title: "Funciona",
-              type: "text", //Type and content of the dropdown
-              content: [
-                "Não é mesmo?",
-                "penis",
-                "vagina",
-                "Quantidade: 40 peças",
-              ],
-            },
-            {
-              title: "Funciona",
-              type: "text", //Type and content of the dropdown
-              content: [
-                "Não é mesmo?",
-                "penis",
-                "vagina",
-                "Quantidade: 40 peças",
-              ],
-            },
-            {
-              title: "Funciona",
-              type: "text", //Type and content of the dropdown
-              content: [
-                "Não é mesmo?",
-                "penis",
-                "vagina",
-                "Quantidade: 40 peças",
-              ],
-            },
           ],
         },
       ],
     },
+    //type Checkbox
     {
-      operationTitle: "TR", //Torno
+      operationTitle: "CB", //Torno
       status: "DOING", //DOING, DONE, TODO.
       steps: [
         {
           //Each dropdown that the operation has.
-          title: "Setup de Máquina", //Dropdown title
+          title: "Checkboxes", //Dropdown title
           stepContent: [
-            {
-              title: "Matéria Prima",
-              type: "text", //Type and content of the dropdown
-              content: ["POM O36 x 250mm", "6 peças"],
-            },
             {
               title: "Programa",
               type: "checkbox", //Type and content of the dropdown
@@ -140,8 +97,9 @@ export const VisualizeDetails = ({ route, navigation }) => {
         },
       ],
     },
+    //type Measurement
     {
-      operationTitle: "PENIS", //Torno
+      operationTitle: "MM", //Torno
       status: "TODO", //DOING, DONE, TODO.
       steps: [
         {
@@ -149,14 +107,38 @@ export const VisualizeDetails = ({ route, navigation }) => {
           title: "Measurement", //Dropdown title
           stepContent: [
             {
-              title: "Batente de Segurança",
+              title: "PenisVagina 234",
               type: "measurement", //Type and content of the dropdown
               imageURL: "https://i.imgur.com/3vUtVcr.png",
               content: [
                 { min: "Ø23.99", max: "Ø24.02" },
                 { min: "Ø32.28", max: "Ø32.32" },
                 { min: "Ø35", max: "Ø35.2" },
+                { min: "Ø23.99", max: "Ø24.02" },
+                { min: "Ø32.28", max: "Ø32.32" },
+                { min: "Ø35", max: "Ø35.2" },
+                { min: "Ø23.99", max: "Ø24.02" },
+                { min: "Ø32.28", max: "Ø32.32" },
+                { min: "Ø35", max: "Ø35.2" },
               ],
+            },
+          ],
+        },
+      ],
+    },
+    //type Measurement-Check
+    {
+      operationTitle: "MC", //Torno
+      status: "TODO", //DOING, DONE, TODO.
+      steps: [
+        {
+          //Each dropdown that the operation has.
+          title: "Measurement Check", //Dropdown title
+          stepContent: [
+            {
+              title: "Aferição de Lote",
+              type: "measurement-check", //Type and content of the dropdown
+              content: ["N1", "N2", "N3", "N5", "N10", "N50", "N100"],
             },
           ],
         },

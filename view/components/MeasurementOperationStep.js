@@ -5,16 +5,18 @@ import { Title } from "react-native-paper";
 export const MeasurementOperationStep = ({ stepContent }) => {
   return (
     <>
-      <Title style={styles.title}>Cotas</Title>
+      <Title style={styles.mainTitle}>{stepContent.title}</Title>
       <View style={styles.container}>
         <Image source={{ uri: stepContent.imageURL }} style={styles.image} />
         <ScrollView style={styles.aside}>
           {stepContent.content.map((item, index) => {
             return (
               <>
-                <Title>Cota {index}</Title>
-                <Text>Min.: {item.min}</Text>
-                <Text>Máx.: {item.max}</Text>
+                <Title style={styles.title}>
+                  Cota {String.fromCharCode(index + 65) /*ASCII*/}
+                </Title>
+                <Text style={styles.text}>Min.: {item.min}</Text>
+                <Text style={styles.text}>Máx.: {item.max}</Text>
               </>
             );
           })}
@@ -30,26 +32,26 @@ const styles = StyleSheet.create({
     display: "flex",
     flexDirection: "row",
     marginHorizontal: "1%",
-    borderColor: "red",
-    borderWidth: 2,
-    borderStyle: "solid",
   },
-  title: {
+  mainTitle: {
     marginHorizontal: "2%",
     marginVertical: "1%",
   },
   image: {
     width: "70%",
     height: 400,
-    borderColor: "green",
-    borderWidth: 2,
-    borderStyle: "solid",
   },
   aside: {
-    borderColor: "blue",
-    borderWidth: 2,
-    borderStyle: "solid",
     display: "flex",
     width: "28%",
+    height: 400,
+  },
+  title: {
+    fontSize: 22,
+    marginHorizontal: 10,
+  },
+  text: {
+    fontSize: 19,
+    marginHorizontal: 19,
   },
 });
