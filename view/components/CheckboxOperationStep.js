@@ -9,6 +9,7 @@ const Check = ({ label, onPress, value }) => {
       labelStyle={styles.labels}
       color="#35CE8D"
       onPress={onPress}
+      style={styles.checkbox}
       status={value ? "checked" : "unchecked"}
     />
   );
@@ -72,8 +73,11 @@ const styles = StyleSheet.create({
     fontSize: 20,
   },
   labels: {
-    color: "#444",
+    color: "#767676",
     fontSize: 18,
+  },
+  checkbox: {
+    marginLeft: "-2%",
   },
 });
 

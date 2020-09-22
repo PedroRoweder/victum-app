@@ -23,6 +23,7 @@ const styles = StyleSheet.create({
   },
   text: {
     marginHorizontal: "2%",
+    color: "#767676",
     fontSize: 18,
   },
 });
