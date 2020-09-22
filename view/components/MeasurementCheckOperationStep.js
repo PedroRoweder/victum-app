@@ -1,6 +1,10 @@
 import React from "react";
-import { View } from "react-native";
+import { View, Text } from "react-native";
 
 export const MeasurementCheckOperationStep = ({ stepContent }) => {
-  return <View></View>;
+  return (
+    <>
+      <Text>penis vagina teste teste</Text>
+    </>
+  );
 };

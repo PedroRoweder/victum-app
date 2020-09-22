@@ -5,6 +5,7 @@ import { TextOperationStep } from "./TextOperationStep";
 import { CheckboxOperationStep } from "./CheckboxOperationStep";
 import { MeasurementOperationStep } from "./MeasurementOperationStep";
 import { MeasurementCheckOperationStep } from "./MeasurementCheckOperationStep";
+import { ToolTableOperationStep } from "./ToolTableOperationStep";
 
 export const OperationDetails = ({ operationDetailsInfo, operationIndex }) => {
   const RenderContentList = (stepContent) => {
@@ -13,10 +14,11 @@ export const OperationDetails = ({ operationDetailsInfo, operationIndex }) => {
       Now, we need to create the separate 
       components, with styling and all.
       The components I know we need: 
-        - Text
-        - Checkbox
-        - Table
-        - Measurement
+        - Text*
+        - Checkbox*
+        - Tool-Table
+        - Measurement*
+        - Measurement-Check
       There wont be many more, maybe one or two.
     */
     /*return (
@@ -33,11 +35,11 @@ export const OperationDetails = ({ operationDetailsInfo, operationIndex }) => {
         return <TextOperationStep stepContent={stepContent} />;
       case "checkbox":
         return <CheckboxOperationStep stepContent={stepContent} />;
-      //case "table":
-      //  return;
+      case "tool-table":
+        return <ToolTableOperationStep stepContent={stepContent} />;
       case "measurement":
         return <MeasurementOperationStep stepContent={stepContent} />;
-      case "measure-check":
+      case "measurement-check":
         return <MeasurementCheckOperationStep stepContent={stepContent} />;
     }
   };

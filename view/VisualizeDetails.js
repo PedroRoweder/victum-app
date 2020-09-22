@@ -144,6 +144,32 @@ export const VisualizeDetails = ({ route, navigation }) => {
         },
       ],
     },
+    {
+      //type table
+      operationTitle: "TB", //Torno
+      status: "TODO", //DOING, DONE, TODO.
+      steps: [
+        {
+          //Each dropdown that the operation has.
+          title: "Setup de máquina", //Dropdown title
+          stepContent: [
+            {
+              title: "Ferramentas",
+              type: "tool-table", //Type and content of the dropdown
+              content: {
+                columns: ["", "INSERTO", "FERRAM.", "SUPORTE", "EXTRA"],
+                rows: [
+                  ["T0101", "MNMG200", "", "BEDAME 2MM", ""],
+                  ["T0202", "TCGT09", "16MM INTERNO", "FIXO 16MM", ""],
+                  ["T0303", "TMAX", "BROCA TMAX 23,5", "", "AR PROGRAMAVEL"],
+                  ["T0202", "", "", "", ""],
+                ],
+              },
+            },
+          ],
+        },
+      ],
+    },
   ];
 
   operationList.map((item) => {
