@@ -8,9 +8,9 @@ export const OperationList = ({ operationListInfo, onPress }) => {
       case "TODO":
         return "#444";
       case "DONE":
-        return "#35CE8D";
+        return "#E6AF2E";
       case "DOING":
-        return "#DD403A";
+        return "#35CE8D";
     }
   };
 
