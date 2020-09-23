@@ -1,23 +1,70 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { View, Text, StyleSheet } from "react-native";
-import { Title, DataTable } from "react-native-paper";
+import { Title, DataTable, Checkbox } from "react-native-paper";
+
+const Check = ({ value, onPress }) => {
+  return (
+    <Checkbox
+      color="#35CE8D"
+      onPress={onPress}
+      status={value ? "checked" : "unchecked"}
+    />
+  );
+};
 
 export const ToolTableOperationStep = ({ stepContent }) => {
+  const [checks, setChecks] = useState([]);
+  const [checked, setChecked] = useState([]);
+
+  useEffect(() => {
+    setChecks(
+      stepContent.content.rows.map((item, index) => (
+        <Check
+          key={index}
+          value={getValue(index)}
+          onPress={() => handleCheck(index)}
+        />
+      ))
+    );
+    console.log(checks);
+  }, [checked]);
+
+  const handleCheck = (key) => {
+    let values = [...checked];
+    let index = values.indexOf(key);
+
+    if (index > -1) {
+      values.splice(index, 1);
+    } else {
+      values.push(key);
+    }
+
+    setChecked(values);
+  };
+
+  const getValue = (key) => {
+    return checked.indexOf(key) > -1;
+  };
+
   const tableTitle = stepContent.content.columns.map((item) => {
     return (
       <DataTable.Title style={styles.dataTableTitle}>{item}</DataTable.Title>
     );
   });
 
-  const tableContent = stepContent.content.rows.map((row) => {
+  const tableContent = stepContent.content.rows.map((row, rowIndex) => {
     return (
       <DataTable.Row style={styles.dataTableRows}>
-        {row.map((rowItem) => {
-          return (
-            <DataTable.Cell style={styles.dataTableCell}>
-              {rowItem}
-            </DataTable.Cell>
-          );
+        {row.map((rowItem, cellIndex) => {
+          if (cellIndex == 0) {
+            return <View style={styles.checkbox}>{checks[rowIndex]}</View>;
+          } else {
+            return (
+              <DataTable.Cell style={styles.dataTableCell}>
+                {rowItem}
+              </DataTable.Cell>
+            );
+          }
         })}
       </DataTable.Row>
     );
@@ -52,17 +99,11 @@ const styles = StyleSheet.create({
     fontSize: 18,
   },
   dataTable: {
-    borderStyle: "solid",
-    borderColor: "red",
-    borderWidth: 0,
     display: "flex",
     flex: 1,
     alignContent: "space-between",
   },
   dataTableTitle: {
-    borderStyle: "solid",
-    borderColor: "blue",
-    borderWidth: 0,
     display: "flex",
     flexDirection: "row",
     justifyContent: "center",
@@ -79,4 +120,29 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     padding: "1%",
   },
+  checkbox: {
+    width: "16.6%",
+    justifyContent: "center",
+    alignItems: "center",
+  },
 });
+
+/* return (
+      <DataTable.Row style={styles.dataTableRows}>
+        {row.map((rowItem, cellIndex) => {
+          if (cellIndex == 0) {
+            return (
+              <DataTable.Cell style={styles.dataTableCell}>
+                {checks[rowIndex]}
+              </DataTable.Cell>
+            );
+          } else {
+            return (
+              <DataTable.Cell style={styles.dataTableCell}>
+                {rowItem}
+              </DataTable.Cell>
+            );
+          }
+        })}
+      </DataTable.Row>
+    ); */
