@@ -1,5 +1,12 @@
 import React, { useState, useEffect } from "react";
-import { View, Text, StyleSheet } from "react-native";
+import {
+  View,
+  Text,
+  StyleSheet,
+  Modal,
+  Image,
+  TouchableOpacity,
+} from "react-native";
 import { Title, DataTable, Checkbox } from "react-native-paper";
 
 const Check = ({ value, onPress }) => {
@@ -15,6 +22,8 @@ const Check = ({ value, onPress }) => {
 export const ToolTableOperationStep = ({ stepContent }) => {
   const [checks, setChecks] = useState([]);
   const [checked, setChecked] = useState([]);
+  const [modalVisible, setModalVisible] = useState(false);
+  const [imageName, setImageName] = useState("");
 
   useEffect(() => {
     setChecks(
@@ -46,36 +55,112 @@ export const ToolTableOperationStep = ({ stepContent }) => {
     return checked.indexOf(key) > -1;
   };
 
-  const tableTitle = stepContent.content.columns.map((item) => {
-    return (
-      <DataTable.Title style={styles.dataTableTitle}>{item}</DataTable.Title>
-    );
+  const tableTitle = stepContent.content.columns.map((item, index) => {
+    if (index == 0) {
+      return <View style={styles.headerTitle}></View>;
+    } else {
+      return (
+        <DataTable.Title style={styles.dataTableTitle}>{item}</DataTable.Title>
+      );
+    }
   });
 
-  const tableContent = stepContent.content.rows.map((row, rowIndex) => {
+  const ShowImageModal = () => {
     return (
-      <DataTable.Row style={styles.dataTableRows}>
-        {row.map((rowItem, cellIndex) => {
-          if (cellIndex == 0) {
-            return <View style={styles.checkbox}>{checks[rowIndex]}</View>;
-          } else {
-            return (
-              <DataTable.Cell style={styles.dataTableCell}>
-                {rowItem}
-              </DataTable.Cell>
-            );
-          }
-        })}
-      </DataTable.Row>
+      imageName != "--" && (
+        <Modal
+          animationType="fade"
+          transparent={true}
+          visible={modalVisible}
+          onRequestClose={() => setModalVisible(false)}
+        >
+          <TouchableOpacity
+            style={{
+              width: "100%",
+              height: "100%",
+              backgroundColor: "rgba(0,0,0,0.5)",
+            }}
+            onPress={() => setModalVisible(false)}
+          >
+            <View style={styles.modal}>
+              <Text style={{ color: "black", fontSize: 20 }}>{imageName}</Text>
+
+              <Image
+                source={require("../../images/MNMG200.jpg")}
+                style={styles.image}
+              />
+            </View>
+          </TouchableOpacity>
+        </Modal>
+      )
     );
+  };
+
+  const tableContent = stepContent.content.rows.map((row, rowIndex) => {
+    if (rowIndex % 2 == 0) {
+      return (
+        <DataTable.Row style={styles.dataTableRowsEven}>
+          {row.map((rowItem, cellIndex) => {
+            if (cellIndex == 0) {
+              return (
+                <View style={styles.checkbox}>
+                  <Text>{rowIndex + 1}</Text>
+                  {checks[rowIndex]}
+                </View>
+              );
+            } else {
+              return (
+                <DataTable.Cell
+                  style={styles.dataTableCell}
+                  onPress={() => {
+                    setImageName(rowItem);
+                    setModalVisible(true);
+                  }}
+                >
+                  {rowItem}
+                </DataTable.Cell>
+              );
+            }
+          })}
+        </DataTable.Row>
+      );
+    } else {
+      return (
+        <DataTable.Row style={styles.dataTableRowsOdd}>
+          {row.map((rowItem, cellIndex) => {
+            if (cellIndex == 0) {
+              return (
+                <View style={styles.checkbox}>
+                  <Text>{rowIndex + 1}</Text>
+                  {checks[rowIndex]}
+                </View>
+              );
+            } else {
+              return (
+                <DataTable.Cell
+                  style={styles.dataTableCell}
+                  onPress={() => {
+                    setImageName(rowItem);
+                    setModalVisible(true);
+                  }}
+                >
+                  {rowItem}
+                </DataTable.Cell>
+              );
+            }
+          })}
+        </DataTable.Row>
+      );
+    }
   });
 
   return (
     <>
       <View style={styles.container}>
+        <ShowImageModal />
         <Title style={styles.title}>{stepContent.title}</Title>
         <DataTable style={styles.dataTable}>
-          <DataTable.Header style={styles.dataTableRows}>
+          <DataTable.Header style={styles.dataTableHeader}>
             {tableTitle}
           </DataTable.Header>
           {tableContent}
@@ -88,7 +173,7 @@ export const ToolTableOperationStep = ({ stepContent }) => {
 const styles = StyleSheet.create({
   container: {
     padding: "2%",
-    marginHorizontal: "2%",
+    marginHorizontal: "1%",
   },
   title: {
     fontSize: 20,
@@ -102,47 +187,52 @@ const styles = StyleSheet.create({
     display: "flex",
     flex: 1,
     alignContent: "space-between",
+    borderColor: "#e9e9e9",
+    borderWidth: 1,
+    borderStyle: "solid",
+  },
+  dataTableHeader: {
+    paddingHorizontal: 0,
+    backgroundColor: "#e9e9e9",
+  },
+  headerTitle: {
+    width: "15%",
   },
   dataTableTitle: {
-    display: "flex",
-    flexDirection: "row",
     justifyContent: "center",
   },
-  dataTableRows: {
-    display: "flex",
-    flexDirection: "row",
+  dataTableRowsEven: {
     justifyContent: "center",
     paddingHorizontal: "-2%",
   },
+  dataTableRowsOdd: {
+    justifyContent: "center",
+    paddingHorizontal: "-2%",
+    backgroundColor: "#e9e9e9",
+  },
   dataTableCell: {
-    display: "flex",
-    flexDirection: "row",
     justifyContent: "center",
     padding: "1%",
   },
   checkbox: {
-    width: "16.6%",
+    flexDirection: "row-reverse",
     justifyContent: "center",
     alignItems: "center",
-  },
-});
 
-/* return (
-      <DataTable.Row style={styles.dataTableRows}>
-        {row.map((rowItem, cellIndex) => {
-          if (cellIndex == 0) {
-            return (
-              <DataTable.Cell style={styles.dataTableCell}>
-                {checks[rowIndex]}
-              </DataTable.Cell>
-            );
-          } else {
-            return (
-              <DataTable.Cell style={styles.dataTableCell}>
-                {rowItem}
-              </DataTable.Cell>
-            );
-          }
-        })}
-      </DataTable.Row>
-    ); */
+    width: "15%",
+  },
+  modal: {
+    position: "absolute",
+    flexDirection: "column-reverse",
+    alignSelf: "center",
+    alignItems: "center",
+    marginHorizontal: "2%",
+    marginVertical: "20%",
+    backgroundColor: "#fff",
+    width: "80%",
+    height: "60%",
+    padding: 2,
+  },
+
+  image: { width: "100%", height: "94%" },
+});

@@ -49,6 +49,8 @@ const styles = StyleSheet.create({
   container: {
     height: "10%",
     maxHeight: "10%",
+    borderBottomColor: "#ddd",
+    borderBottomWidth: 3,
   },
   buttonContainer: {
     flex: 1,

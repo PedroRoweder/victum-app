@@ -157,27 +157,13 @@ export const VisualizeDetails = ({ route, navigation }) => {
               title: "Ferramentas",
               type: "tool-table", //Type and content of the dropdown
               content: {
-                columns: [
-                  "",
-                  "POSIÇÃO",
-                  "INSERTO",
-                  "FERRAM.",
-                  "SUPORTE",
-                  "EXTRA",
-                ],
+                columns: ["", "INSERTO", "FERRAM.", "SUPORTE"],
                 rows: [
-                  ["", "T0101", "MNMG200", "--", "BEDAME 2MM", "--"],
-                  ["", "T0202", "TCGT09", "16MM INTERNO", "FIXO 16MM", "--"],
-                  [
-                    "",
-                    "T0303",
-                    "TMAX",
-                    "BROCA TMAX 23,5",
-                    "--",
-                    "AR PROGRAMAVEL",
-                  ],
-                  ["", "T0404", "--", "--", "--", "--"],
-                  ["", "T0505", "--", "--", "--", "--"],
+                  ["", "MNMG200", "--", "BEDAME 2MM"],
+                  ["", "TCGT09", "16MM INT.", "FIXO 16MM"],
+                  ["", "TMAX", "TMAX 23,5", "--"],
+                  ["", "--", "--", "--"],
+                  ["", "--", "--", "--"],
                 ],
               },
             },
