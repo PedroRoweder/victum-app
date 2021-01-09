@@ -16,7 +16,7 @@ export const OperationList = ({ operationListInfo, onPress }) => {
 
   const buttonList = operationListInfo.map((item, index) => {
     return (
-      <View style={styles.mainContainer}>
+      <View style={styles.mainContainer} key={index}>
         <TouchableHighlight
           onPress={() => onPress(index)}
           underlayColor="white"

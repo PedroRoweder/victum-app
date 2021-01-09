@@ -110,35 +110,25 @@ export const VisualizeDetails = ({ route, navigation }) => {
               title: "PenisVagina 234",
               type: "measurement", //Type and content of the dropdown
               imageURL: "https://i.imgur.com/3vUtVcr.png",
-              content: [
-                { min: "Ø23.99", max: "Ø24.02" },
-                { min: "Ø32.28", max: "Ø32.32" },
-                { min: "Ø35", max: "Ø35.2" },
-                { min: "Ø23.99", max: "Ø24.02" },
-                { min: "Ø32.28", max: "Ø32.32" },
-                { min: "Ø35", max: "Ø35.2" },
-                { min: "Ø23.99", max: "Ø24.02" },
-                { min: "Ø32.28", max: "Ø32.32" },
-                { min: "Ø35", max: "Ø35.2" },
-              ],
-            },
-          ],
-        },
-      ],
-    },
-    //type Measurement-Check
-    {
-      operationTitle: "MC", //Torno
-      status: "TODO", //DOING, DONE, TODO.
-      steps: [
-        {
-          //Each dropdown that the operation has.
-          title: "Measurement Check", //Dropdown title
-          stepContent: [
-            {
-              title: "Aferição de Lote",
-              type: "measurement-check", //Type and content of the dropdown
-              content: ["N1", "N2", "N3", "N5", "N10", "N50", "N100"],
+              content: {
+                sample: [
+                  "N1",
+                  "N2",
+                  "N3",
+                  "N5",
+                  "N10",
+                  "N20",
+                  "N50",
+                  "N100",
+                  "N200",
+                ],
+                measure: [
+                  { min: "Ø23.99", max: "Ø24.02" },
+                  { min: "Ø32.28", max: "Ø32.32" },
+                  { min: "Ø35", max: "Ø35.2" },
+                  { min: "Ø23.99", max: "Ø24.02" },
+                ],
+              },
             },
           ],
         },
