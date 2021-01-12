@@ -8,7 +8,7 @@ import { MeasurementCheckOperationStep } from "./MeasurementCheckOperationStep";
 import { ToolTableOperationStep } from "./ToolTableOperationStep";
 
 export const OperationDetails = ({ operationDetailsInfo, operationIndex }) => {
-  const RenderContentList = (stepContent) => {
+  const RenderContentList = (stepContent, index) => {
     /*
       THIS WORKS! But just returns plain text.
       Now, we need to create the separate 
@@ -32,15 +32,22 @@ export const OperationDetails = ({ operationDetailsInfo, operationIndex }) => {
 
     switch (stepContent.type) {
       case "text":
-        return <TextOperationStep stepContent={stepContent} />;
+        return <TextOperationStep key={index} stepContent={stepContent} />;
       case "checkbox":
-        return <CheckboxOperationStep stepContent={stepContent} />;
+        return <CheckboxOperationStep key={index} stepContent={stepContent} />;
       case "tool-table":
-        return <ToolTableOperationStep stepContent={stepContent} />;
+        return <ToolTableOperationStep key={index} stepContent={stepContent} />;
       case "measurement":
-        return <MeasurementOperationStep stepContent={stepContent} />;
+        return (
+          <MeasurementOperationStep key={index} stepContent={stepContent} />
+        );
       case "measurement-check":
-        return <MeasurementCheckOperationStep stepContent={stepContent} />;
+        return (
+          <MeasurementCheckOperationStep
+            key={index}
+            stepContent={stepContent}
+          />
+        );
     }
   };
 
@@ -55,8 +62,8 @@ export const OperationDetails = ({ operationDetailsInfo, operationIndex }) => {
           title={step.title}
           titleStyle={styles.dropdownText}
         >
-          {step.stepContent.map((stepContent) => {
-            return RenderContentList(stepContent);
+          {step.stepContent.map((stepContent, index) => {
+            return RenderContentList(stepContent, index);
           })}
         </List.Accordion>
       );

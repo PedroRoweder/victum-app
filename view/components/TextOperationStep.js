@@ -6,8 +6,12 @@ export const TextOperationStep = ({ stepContent }) => {
   return (
     <View style={styles.container}>
       <Title style={styles.title}>{stepContent.title}</Title>
-      {stepContent.content.map((item) => {
-        return <Text style={styles.text}>{item}</Text>;
+      {stepContent.content.map((item, index) => {
+        return (
+          <Text key={index} style={styles.text}>
+            {item}
+          </Text>
+        );
       })}
     </View>
   );

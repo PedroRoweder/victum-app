@@ -228,7 +228,7 @@ export const MeasurementOperationStep = ({ stepContent }) => {
         <ScrollView style={styles.aside}>
           {stepContent.content.measure.map((item, index) => {
             return (
-              <View>
+              <View key={index}>
                 <Title style={styles.title}>
                   Cota {String.fromCharCode(index + 65) /*ASCII*/}
                 </Title>
