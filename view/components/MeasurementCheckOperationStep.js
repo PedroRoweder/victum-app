@@ -4,7 +4,7 @@ import { View, Text } from "react-native";
 export const MeasurementCheckOperationStep = ({ stepContent }) => {
   return (
     <>
-      <Text>penis vagina teste teste</Text>
+      <Text>Teste</Text>
     </>
   );
 };

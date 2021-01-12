@@ -35,7 +35,6 @@ export const ToolTableOperationStep = ({ stepContent }) => {
         />
       ))
     );
-    console.log(checks);
   }, [checked]);
 
   const handleCheck = (key) => {
@@ -57,10 +56,12 @@ export const ToolTableOperationStep = ({ stepContent }) => {
 
   const tableTitle = stepContent.content.columns.map((item, index) => {
     if (index == 0) {
-      return <View style={styles.headerTitle}></View>;
+      return <View key={index} style={styles.headerTitle}></View>;
     } else {
       return (
-        <DataTable.Title style={styles.dataTableTitle}>{item}</DataTable.Title>
+        <DataTable.Title ket={index} style={styles.dataTableTitle}>
+          {item}
+        </DataTable.Title>
       );
     }
   });
@@ -83,12 +84,24 @@ export const ToolTableOperationStep = ({ stepContent }) => {
             onPress={() => setModalVisible(false)}
           >
             <View style={styles.modal}>
-              <Text style={{ color: "black", fontSize: 20 }}>{imageName}</Text>
-
               <Image
                 source={require("../../images/MNMG200.jpg")}
                 style={styles.image}
               />
+              <Text
+                style={{
+                  color: "black",
+                  fontSize: 20,
+                  backgroundColor: "rgba(0,0,0,0.15)",
+                  padding: 8,
+                  borderTopLeftRadius: 10,
+                  borderTopRightRadius: 10,
+                  marginBottom: 0,
+                  position: "absolute",
+                }}
+              >
+                {imageName}
+              </Text>
             </View>
           </TouchableOpacity>
         </Modal>
@@ -99,11 +112,11 @@ export const ToolTableOperationStep = ({ stepContent }) => {
   const tableContent = stepContent.content.rows.map((row, rowIndex) => {
     if (rowIndex % 2 == 0) {
       return (
-        <DataTable.Row style={styles.dataTableRowsEven}>
+        <DataTable.Row key={rowIndex} style={styles.dataTableRowsEven}>
           {row.map((rowItem, cellIndex) => {
             if (cellIndex == 0) {
               return (
-                <View style={styles.checkbox}>
+                <View key={cellIndex} style={styles.checkbox}>
                   <Text>{rowIndex + 1}</Text>
                   {checks[rowIndex]}
                 </View>
@@ -111,6 +124,7 @@ export const ToolTableOperationStep = ({ stepContent }) => {
             } else {
               return (
                 <DataTable.Cell
+                  key={cellIndex}
                   style={styles.dataTableCell}
                   onPress={() => {
                     setImageName(rowItem);
@@ -126,11 +140,11 @@ export const ToolTableOperationStep = ({ stepContent }) => {
       );
     } else {
       return (
-        <DataTable.Row style={styles.dataTableRowsOdd}>
+        <DataTable.Row key={rowIndex} style={styles.dataTableRowsOdd}>
           {row.map((rowItem, cellIndex) => {
             if (cellIndex == 0) {
               return (
-                <View style={styles.checkbox}>
+                <View key={cellIndex} style={styles.checkbox}>
                   <Text>{rowIndex + 1}</Text>
                   {checks[rowIndex]}
                 </View>
@@ -138,6 +152,7 @@ export const ToolTableOperationStep = ({ stepContent }) => {
             } else {
               return (
                 <DataTable.Cell
+                  key={cellIndex}
                   style={styles.dataTableCell}
                   onPress={() => {
                     setImageName(rowItem);
@@ -176,7 +191,15 @@ const styles = StyleSheet.create({
     marginHorizontal: "1%",
   },
   title: {
+    alignSelf: "flex-start",
     fontSize: 20,
+    backgroundColor: "#e9e9e9",
+    padding: 7,
+    marginBottom: 0,
+    borderTopLeftRadius: 10,
+    borderTopRightRadius: 10,
+    borderBottomColor: "#ddd",
+    borderBottomWidth: 2,
   },
   text: {
     marginHorizontal: "2%",
@@ -234,5 +257,5 @@ const styles = StyleSheet.create({
     padding: 2,
   },
 
-  image: { width: "100%", height: "94%" },
+  image: { width: "100%", height: "100%" },
 });

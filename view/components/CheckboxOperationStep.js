@@ -15,7 +15,7 @@ const Check = ({ label, onPress, value }) => {
   );
 };
 
-export const CheckboxOperationStep = ({ stepContent }) => {
+export const CheckboxOperationStep = ({ stepContent , setCurrentState , currentState}) => {
   const [checks, setChecks] = useState([]);
   const [checked, setChecked] = useState([]);
   const [loadStatus, setLoadStatus] = useState(true);
@@ -55,7 +55,7 @@ export const CheckboxOperationStep = ({ stepContent }) => {
   return (
     <>
       {(loadStatus && <ActivityIndicator size="small" color="#E6AF2E" />) || (
-        <View style={styles.container}>
+        <View style={styles.container} >
           <Title style={styles.title}>{stepContent.title}</Title>
           {checks}
         </View>

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState , useEffect} from "react";
 import { View, Text, StyleSheet, ScrollView } from "react-native";
 import { List, Title } from "react-native-paper";
 import { TextOperationStep } from "./TextOperationStep";

@@ -41,7 +41,7 @@ export const VisualizeDetails = ({ route, navigation }) => {
           title: "Outro Text", //Dropdown title
           stepContent: [
             {
-              title: "Seloko",
+              title: "Teste",
               type: "text", //Type and content of the dropdown
               content: [
                 "Material: Poliacetal Negro",
@@ -51,12 +51,12 @@ export const VisualizeDetails = ({ route, navigation }) => {
               ],
             },
             {
-              title: "Funciona",
+              title: "Teste",
               type: "text", //Type and content of the dropdown
               content: [
-                "Não é mesmo?",
-                "penis",
-                "vagina",
+                "Isso é um teste",
+                "Teste",
+                "Testando",
                 "Quantidade: 40 peças",
               ],
             },
@@ -107,7 +107,7 @@ export const VisualizeDetails = ({ route, navigation }) => {
           title: "Measurement", //Dropdown title
           stepContent: [
             {
-              title: "PenisVagina 234",
+              title: "Testando 234",
               type: "measurement", //Type and content of the dropdown
               imageURL: "https://i.imgur.com/3vUtVcr.png",
               content: {
@@ -147,7 +147,7 @@ export const VisualizeDetails = ({ route, navigation }) => {
               title: "Ferramentas",
               type: "tool-table", //Type and content of the dropdown
               content: {
-                columns: ["", "INSERTO", "FERRAM.", "SUPORTE"],
+                columns: ["", "INSERTO", "FERRAMENTA", "SUPORTE"],
                 rows: [
                   ["", "MNMG200", "--", "BEDAME 2MM"],
                   ["", "TCGT09", "16MM INT.", "FIXO 16MM"],
