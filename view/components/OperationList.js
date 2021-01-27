@@ -16,11 +16,7 @@ export const OperationList = ({ operationListInfo, onPress }) => {
 
   const buttonList = operationListInfo.map((item, index) => {
     return (
-<<<<<<< Updated upstream
       <View style={styles.mainContainer} key={index}>
-=======
-      <View key={index} style={styles.mainContainer}>
->>>>>>> Stashed changes
         <TouchableHighlight
           onPress={() => onPress(index)}
           underlayColor="white"
